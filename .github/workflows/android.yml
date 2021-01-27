@@ -21,6 +21,17 @@ jobs:
       run: chmod +x gradlew
     - name: Build apk with Gradle
       run: ./gradlew assembleRelease && find . -name "*.apk"
+    - uses: Tlaster/android-sign@v1
+      name: Sign apk
+      with:
+        releaseDirectory: |
+          app/build/outputs/apk/release
+          app/build/outputs/bundle/release
+        signingKeyBase64: ${{ secrets.SIGNING_KEY }}
+        output: build/release/signed
+        alias: ${{ secrets.ALIAS }}
+        keyStorePassword: ${{ secrets.KEY_STORE_PASSWORD }}
+        keyPassword: ${{ secrets.KEY_PASSWORD }}
     - name: Upload APK
       uses: actions/upload-artifact@v1
       with:
