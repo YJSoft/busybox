@@ -68,7 +68,7 @@ Latest BusyBox v1.31.1, supported 374 applets:
 
 To access busybox tools without superuser privileges, perform the following command in Android terminal:
 
-    export PATH=/data/data/ru.meefik.busybox/files/bin:$PATH
+    export PATH=/data/data/xyz.yjsoft.busybox/files/bin:$PATH
 
 **References**:
 
